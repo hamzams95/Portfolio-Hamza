@@ -3,67 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamza Mansouri Sandali | IT Infrastructure Architect</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <title>El Mansouri Sandali Hamza — Technicien Support Informatique / Helpdesk N1</title>
+    <meta name="description" content="Portfolio de Hamza El Mansouri Sandali, Technicien Support Informatique & Helpdesk N1/N2. Disponible en CDI / CDD sur Dreux (28) et les Yvelines (78).">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Palette Anthracite & Émeraude */
-            --bg-body: #0f172a; 
-            --bg-card: #1e293b; 
-            --border-color: #334155; 
+            /* Palette Noir Profond & Or Élégant */
+            --bg-body: #0a0a0a;
+            --bg-alt: #111111;
+            --bg-card: #161616;
+            --border-color: #262626;
             
-            --text-main: #f1f5f9; 
-            --text-muted: #94a3b8; 
+            --text-main: #e8e4dc;
+            --text-white: #f5f2ed;
+            --text-muted: #8a857d;
             
-            /* Accentuation Vert Émeraude */
-            --accent-green: #10b981; 
-            --accent-green-dim: rgba(16, 185, 129, 0.1);
-            --accent-glow: 0 0 15px rgba(16, 185, 129, 0.3);
+            /* Accentuation Or / Bronze */
+            --accent-gold: #c8a96e;
+            --accent-gold-dark: #8b6f3e;
+            --accent-gold-dim: rgba(200, 169, 110, 0.1);
+            --accent-glow: 0 0 20px rgba(200, 169, 110, 0.25);
             
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
             background-color: var(--bg-body);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.65;
             overflow-x: hidden;
         }
 
-        /* Subtile texture de fond technique */
+        a { color: inherit; }
+        .serif { font-family: 'Cormorant Garamond', serif; }
+
+        /* Grille subtile dorée en arrière-plan */
         body::before {
             content: ""; position: fixed; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v2h-4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v2h-4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            z-index: -1; opacity: 0.5;
+            background-image: 
+                linear-gradient(rgba(200, 169, 110, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 169, 110, 0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1; pointer-events: none;
         }
 
         /* --- BARRE DE PROGRESSION SCROLL --- */
         #scroll-progress {
-            position: fixed; top: 0; left: 0; height: 3px;
-            background: var(--accent-green); z-index: 9999;
-            width: 0%; box-shadow: var(--accent-glow);
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold));
+            z-index: 9999; width: 0%; box-shadow: var(--accent-glow);
             transition: width 0.1s ease-out;
         }
 
-        /* --- CURSEUR CUSTOM --- */
+        /* --- CURSEUR PERSONNALISÉ DORÉ --- */
         .cursor-dot {
-            width: 8px; height: 8px; background: var(--accent-green);
+            width: 7px; height: 7px; background: var(--accent-gold);
             border-radius: 50%; position: fixed; top: 0; left: 0;
             transform: translate(-50%, -50%); pointer-events: none; z-index: 10000;
             transition: transform 0.1s ease;
         }
         .cursor-outline {
-            width: 40px; height: 40px; border: 1px solid rgba(16, 185, 129, 0.5);
+            width: 38px; height: 38px; border: 1px solid rgba(200, 169, 110, 0.5);
             border-radius: 50%; position: fixed; top: 0; left: 0;
             transform: translate(-50%, -50%); pointer-events: none; z-index: 9999;
             transition: transform 0.15s ease-out, width 0.2s, height 0.2s, background 0.2s;
         }
         .cursor-hover .cursor-outline {
-            width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border-color: transparent;
+            width: 58px; height: 58px; background: rgba(200, 169, 110, 0.1); border-color: var(--accent-gold);
         }
 
         @media (max-width: 992px) {
@@ -72,192 +83,383 @@
         }
 
         /* --- ANIMATIONS AU SCROLL --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); transition-duration: 0.8s; }
+        .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.75s ease, transform 0.75s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* --- NAVIGATION --- */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 1.2rem 5%;
-            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            position: fixed; top: 0; left: 0; right: 0; padding: 1.2rem 4rem;
+            background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color); z-index: 1000;
             display: flex; justify-content: space-between; align-items: center; transition: padding 0.3s ease;
         }
-        .logo { font-weight: 900; font-size: 1.6rem; color: var(--text-main); text-decoration: none; letter-spacing: -1px;}
-        .logo span { color: var(--accent-green); }
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400; font-size: 1.45rem; color: var(--text-white);
+            text-decoration: none; letter-spacing: 0.08em;
+        }
+        .logo span { color: var(--accent-gold); font-style: italic; }
 
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: var(--transition); position: relative;}
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-muted);
+            font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+            transition: var(--transition); position: relative;
+        }
         .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
-            background-color: var(--accent-green); transition: width 0.3s ease;
+            content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0;
+            background-color: var(--accent-gold); transition: width 0.3s ease;
         }
-        .nav-links a:hover { color: var(--accent-green); }
-        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-gold); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-        /* --- BOUTONS --- */
+        .burger {
+            display: none; background: none; border: 1px solid var(--border-color);
+            color: var(--accent-gold); padding: 0.4rem 0.8rem; font-size: 1rem;
+        }
+
+        /* --- BOUTONS STYLE LUXE / ÉDITORIAL --- */
         .btn {
-            padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 600; text-decoration: none;
-            display: inline-flex; align-items: center; justify-content: center; transition: var(--transition);
-            font-size: 0.95rem; border: none; position: relative; overflow: hidden;
+            padding: 0.85rem 1.8rem; font-family: 'DM Sans', sans-serif;
+            font-size: 0.74rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+            text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+            gap: 0.6rem; transition: var(--transition); border: 1px solid var(--accent-gold);
+            position: relative; overflow: hidden;
         }
-        .btn-primary { 
-            background: var(--accent-green); color: #0f172a; 
-            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+        .btn-primary {
+            background: var(--accent-gold); color: #0a0a0a;
         }
-        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--accent-glow); }
-        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
-        .btn-outline:hover { background: var(--accent-green-dim); border-color: var(--accent-green); color: var(--accent-green); transform: translateY(-3px); }
-        .btn-small { padding: 0.6rem 1.2rem; font-size: 0.85rem; border-radius: 6px; }
+        .btn-primary:hover {
+            background: #d8bb83; transform: translateY(-2px); box-shadow: var(--accent-glow);
+        }
+        .btn-outline {
+            background: transparent; color: var(--accent-gold); border: 1px solid var(--border-color);
+        }
+        .btn-outline:hover {
+            background: var(--accent-gold-dim); border-color: var(--accent-gold);
+            color: var(--text-white); transform: translateY(-2px);
+        }
+        .btn-small { padding: 0.6rem 1.1rem; font-size: 0.7rem; letter-spacing: 0.12em; }
 
-        /* --- STRUCTURE GENERALE --- */
-        section { padding: 8rem 5%; max-width: 1300px; margin: 0 auto; }
-        .section-header { margin-bottom: 4rem; text-align: left;}
-        .tagline { color: var(--accent-green); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 0.5rem; display: block; }
-        h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--text-main); line-height: 1.2; letter-spacing: -1px;}
+        /* --- STRUCTURE GÉNÉRALE --- */
+        section {
+            padding: 7rem 4rem; max-width: 1340px; margin: 0 auto;
+            border-top: 1px solid var(--border-color);
+        }
+        .section-header { margin-bottom: 3.5rem; text-align: left; }
+        .tagline {
+            color: var(--accent-gold); font-size: 0.7rem; text-transform: uppercase;
+            letter-spacing: 0.28em; margin-bottom: 0.8rem; display: block;
+        }
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.1rem, 4vw, 3.4rem); font-weight: 300;
+            color: var(--text-white); line-height: 1.12;
+        }
 
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.8rem; }
 
-        /* --- CARTES BENTO REFINEES AVEC SPOTLIGHT --- */
+        /* --- CARTES BENTO AVEC SPOTLIGHT DORÉ --- */
         .bento-card {
-            background: rgba(30, 41, 59, 0.7); border-radius: 12px; padding: 2.5rem;
+            background: var(--bg-card); padding: 2.3rem;
             border: 1px solid var(--border-color); transition: var(--transition);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             position: relative; overflow: hidden;
         }
         .bento-card::before {
             content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(16, 185, 129, 0.08), transparent 40%);
+            background: radial-gradient(700px circle at var(--mouse-x) var(--mouse-y), rgba(200, 169, 110, 0.08), transparent 40%);
             opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 0;
         }
         .bento-card:hover::before { opacity: 1; }
-        .bento-card > * { position: relative; z-index: 1; } 
-        .bento-card:hover { border-color: rgba(16, 185, 129, 0.4); transform: translateY(-3px); }
+        .bento-card > * { position: relative; z-index: 1; }
+        .bento-card:hover { border-color: var(--accent-gold-dark); transform: translateY(-3px); }
 
         /* --- HERO SECTION --- */
-        #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
-        .hero-content { width: 100%; }
-        
+        #hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding-top: 8.5rem; padding-bottom: 5rem; border-top: none; position: relative;
+        }
+        #hero::after {
+            content: ''; position: absolute; right: -5%; top: 20%; width: 45vw; height: 55vh;
+            background: radial-gradient(ellipse, rgba(200, 169, 110, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content { width: 100%; position: relative; z-index: 1; }
+
         .badge-status {
-            display: inline-flex; align-items: center; gap: 0.7rem;
-            background: rgba(16, 185, 129, 0.08); color: var(--accent-green);
-            padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem;
-            border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 2.5rem;
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            background: rgba(22, 22, 22, 0.85); color: var(--text-main);
+            padding: 0.5rem 1.15rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+            border: 1px solid var(--border-color); margin-bottom: 2.2rem;
             transition: var(--transition);
         }
-        .badge-status:hover { background: rgba(16, 185, 129, 0.15); transform: scale(1.05); }
+        .badge-status:hover { border-color: var(--accent-gold); }
 
-        .pulse { width: 9px; height: 9px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 10px var(--accent-green); animation: pulse-green 2s infinite; }
-        @keyframes pulse-green { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+        .pulse {
+            width: 8px; height: 8px; background: #5fbf7a; border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(95, 191, 122, 0.6); animation: pulse-green 2s infinite; flex-shrink: 0;
+        }
+        @keyframes pulse-green {
+            70% { box-shadow: 0 0 0 9px rgba(95, 191, 122, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(95, 191, 122, 0); }
+        }
 
-        .hero-header-flex { display: flex; align-items: center; gap: 2.5rem; margin-bottom: 2rem; }
+        /* Photo + Nom côte à côte dès l'ouverture */
+        .hero-header-flex {
+            display: flex; align-items: center; gap: 2.8rem; margin-bottom: 2rem; flex-wrap: wrap;
+        }
+        .profile-pic-wrap {
+            position: relative; padding: 6px; border: 1px solid var(--accent-gold-dark);
+            background: var(--bg-card); transition: var(--transition); flex-shrink: 0;
+        }
+        .profile-pic-wrap::before {
+            content: ''; position: absolute; top: -6px; right: -6px; width: 40%; height: 40%;
+            border-top: 1px solid var(--accent-gold); border-right: 1px solid var(--accent-gold);
+            pointer-events: none;
+        }
+        .profile-pic-wrap::after {
+            content: ''; position: absolute; bottom: -6px; left: -6px; width: 40%; height: 40%;
+            border-bottom: 1px solid var(--accent-gold); border-left: 1px solid var(--accent-gold);
+            pointer-events: none;
+        }
         .profile-pic {
-            width: 140px; height: 140px; border-radius: 12px; object-fit: cover;
-            border: 2px solid var(--border-color); padding: 5px; background: var(--bg-card);
-            transition: var(--transition);
+            width: 155px; height: 185px; object-fit: cover; display: block;
+            filter: contrast(1.03); transition: var(--transition);
         }
-        .profile-pic:hover { border-color: var(--accent-green); transform: rotate(3deg) scale(1.05); box-shadow: var(--accent-glow); }
+        .profile-pic-wrap:hover {
+            border-color: var(--accent-gold); transform: translateY(-3px); box-shadow: var(--accent-glow);
+        }
 
-        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1; letter-spacing: -2px;}
-        h1 span { color: var(--accent-green); display: inline-block; animation: floatText 3s ease-in-out infinite alternate;}
-        @keyframes floatText { 0% { transform: translateY(0); } 100% { transform: translateY(-5px); text-shadow: var(--accent-glow); } }
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6.8vw, 5.8rem); font-weight: 300;
+            line-height: 1.03; letter-spacing: -0.02em; color: var(--text-white);
+        }
+        h1 span {
+            color: var(--accent-gold); font-style: italic; display: inline-block;
+        }
 
+        .typewriter-wrap {
+            margin-bottom: 1.4rem; min-height: 2.2rem; display: flex; align-items: center;
+        }
         .typewriter {
-            font-size: 1.6rem; font-weight: 300; color: var(--text-muted); margin-bottom: 2rem; letter-spacing: -0.5px;
-            display: inline-block; overflow: hidden; white-space: nowrap; border-right: 2px solid var(--accent-green);
-            animation: blink-cursor 0.75s step-end infinite;
+            font-size: clamp(1.05rem, 2vw, 1.35rem); font-weight: 300; color: var(--accent-gold);
+            letter-spacing: 0.04em; display: inline-block; padding-right: 6px;
+            border-right: 2px solid var(--accent-gold);
+            animation: blink-cursor 0.8s step-end infinite;
         }
-        @keyframes blink-cursor { from, to { border-color: transparent } 50% { border-color: var(--accent-green); } }
+        @keyframes blink-cursor { from, to { border-color: transparent } 50% { border-color: var(--accent-gold); } }
+
+        .hero-stats {
+            display: flex; gap: 3.5rem; flex-wrap: wrap; margin-top: 3.5rem;
+            padding-top: 2rem; border-top: 1px solid var(--border-color); max-width: 680px;
+        }
+        .stat-item b {
+            display: block; font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem; font-weight: 300; color: var(--accent-gold); line-height: 1;
+        }
+        .stat-item span {
+            font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted);
+        }
 
         /* --- TAGS (PROFIL) --- */
-        .tag-container { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.4rem; }
         .tag {
-            padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500;
-            background: rgba(51, 65, 85, 0.3); border: 1px solid var(--border-color);
+            padding: 0.5rem 1.1rem; font-size: 0.73rem; letter-spacing: 0.11em; text-transform: uppercase;
+            background: var(--bg-alt); border: 1px solid var(--border-color);
             color: var(--text-muted); transition: var(--transition);
         }
-        .tag:hover { color: white; border-color: var(--accent-green); background: var(--accent-green-dim); transform: translateY(-2px); }
+        .tag:hover {
+            color: var(--accent-gold); border-color: var(--accent-gold);
+            background: var(--accent-gold-dim); transform: translateY(-2px);
+        }
+
+        /* --- MÉTHODE DE RÉSOLUTION (NOUVELLE SECTION) --- */
+        .steps-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 0; counter-reset: step-counter;
+        }
+        .step-card {
+            padding: 2.2rem 1.8rem; border: 1px solid var(--border-color);
+            margin: 0 -1px -1px 0; background: var(--bg-card);
+            counter-increment: step-counter; transition: var(--transition); position: relative;
+        }
+        .step-card:hover { background: #1c1a16; border-color: var(--accent-gold-dark); z-index: 2; }
+        .step-card::before {
+            content: '0' counter(step-counter);
+            font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300;
+            color: rgba(200, 169, 110, 0.38); display: block; line-height: 1; margin-bottom: 1rem;
+        }
+        .step-card h4 {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400;
+            color: var(--text-white); margin-bottom: 0.5rem;
+        }
+        .step-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
 
         /* --- TIMELINE --- */
-        .timeline { position: relative; padding-left: 2.5rem; border-left: 1px solid var(--border-color); }
-        .timeline-item { margin-bottom: 3.5rem; position: relative; transition: var(--transition); }
+        .timeline { position: relative; padding-left: 2.2rem; border-left: 1px solid var(--border-color); }
+        .timeline-item { margin-bottom: 3rem; position: relative; transition: var(--transition); }
         .timeline-item::before {
-            content: ''; position: absolute; left: -2.9rem; top: 0.25rem; width: 10px; height: 10px;
-            border-radius: 50%; background: var(--bg-body); border: 2px solid var(--accent-green);
-            box-shadow: var(--accent-glow); transition: var(--transition);
+            content: ''; position: absolute; left: -2.55rem; top: 0.35rem; width: 9px; height: 9px;
+            border-radius: 50%; background: var(--bg-body); border: 1.5px solid var(--accent-gold);
+            transition: var(--transition);
         }
-        .timeline-item:hover { transform: translateX(10px); }
-        .timeline-item:hover::before { background: var(--accent-green); transform: scale(1.3); }
-        .tl-date { color: var(--accent-green); font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 0.5rem; display: block; text-transform: uppercase;}
-        .tl-title { font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 0.3rem; letter-spacing: -0.5px;}
-        .tl-subtitle { font-size: 1rem; font-weight: 500; color: var(--text-muted); margin-bottom: 1rem; }
-        .tl-desc { color: var(--text-muted); font-size: 0.95rem; }
-        .tl-desc ul { margin-left: 1.2rem; margin-top: 0.5rem; list-style-type: circle; }
-        .tl-desc li { margin-bottom: 0.5rem; }
+        .timeline-item:hover { transform: translateX(6px); }
+        .timeline-item:hover::before { background: var(--accent-gold); box-shadow: var(--accent-glow); }
+        .tl-date {
+            color: var(--accent-gold); font-size: 0.72rem; letter-spacing: 0.2em;
+            margin-bottom: 0.35rem; display: block; text-transform: uppercase;
+        }
+        .tl-title {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 400;
+            color: var(--text-white); margin-bottom: 0.2rem;
+        }
+        .tl-subtitle {
+            font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--text-muted); margin-bottom: 0.8rem;
+        }
+        .tl-desc { color: var(--text-muted); font-size: 0.9rem; }
+        .tl-desc ul { margin-left: 1.1rem; margin-top: 0.4rem; }
+        .tl-desc li { margin-bottom: 0.4rem; }
 
-        /* --- SKILLS --- */
+        /* --- SKILLS (ANIMATION AU SCROLL) --- */
         .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
-        .skill-group h3 { font-size: 1.1rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem;}
-        .skill-bar-wrap { margin-bottom: 1.8rem; }
-        .skill-info { display: flex; justify-content: space-between; font-weight: 500; margin-bottom: 0.6rem; font-size: 0.95rem; color: var(--text-main); }
-        .skill-track { height: 6px; background: rgba(51, 65, 85, 0.5); border-radius: 3px; overflow: hidden; position: relative;}
-        .skill-fill { height: 100%; background: var(--accent-green); border-radius: 3px; width: 0%; transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--accent-glow); }
-        .skill-fill::after {
-            content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 20px;
-            background: rgba(255,255,255,0.3); transform: skewX(-20deg) translateX(-30px);
-            animation: shine 3s infinite;
+        .skill-group h3 {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400;
+            color: var(--accent-gold); margin-bottom: 1.6rem; padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--border-color);
         }
-        @keyframes shine { 0% { transform: skewX(-20deg) translateX(-30px); } 100% { transform: skewX(-20deg) translateX(400px); } }
+        .skill-bar-wrap { margin-bottom: 1.5rem; }
+        .skill-info {
+            display: flex; justify-content: space-between; margin-bottom: 0.5rem;
+            font-size: 0.85rem; letter-spacing: 0.04em; color: var(--text-main);
+        }
+        .skill-info span:last-child { color: var(--accent-gold); font-size: 0.78rem; }
+        .skill-track { height: 3px; background: var(--border-color); overflow: hidden; position: relative; }
+        .skill-fill {
+            height: 100%; background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold));
+            width: 0%; transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
 
         /* --- PROJETS GRID --- */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.8rem; }
         .project-card {
-            background: rgba(30, 41, 59, 0.7); border-radius: 12px; border: 1px solid var(--border-color);
+            background: var(--bg-card); border: 1px solid var(--border-color);
             display: flex; flex-direction: column; overflow: hidden; transition: var(--transition);
         }
-        .project-card:hover { border-color: var(--accent-green); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
-        .project-img-wrapper { height: 180px; width: 100%; overflow: hidden; position: relative; border-bottom: 1px solid var(--border-color); }
-        .project-img { height: 100%; width: 100%; object-fit: cover; filter: grayscale(100%) contrast(120%); opacity: 0.6; transition: var(--transition); transform: scale(1); }
-        .project-card:hover .project-img { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
-        .project-body { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .project-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: white; letter-spacing: -0.5px;}
-        .project-meta { font-size: 0.9rem; margin-bottom: 1.8rem; }
-        .meta-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(51, 65, 85, 0.5); }
+        .project-card:hover {
+            border-color: var(--accent-gold-dark); transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        .project-img-wrapper {
+            height: 175px; width: 100%; overflow: hidden; position: relative;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .project-img {
+            height: 100%; width: 100%; object-fit: cover;
+            filter: grayscale(100%) contrast(115%); opacity: 0.55;
+            transition: var(--transition); transform: scale(1);
+        }
+        .project-card:hover .project-img { filter: grayscale(20%); opacity: 0.9; transform: scale(1.06); }
+        .project-body {
+            padding: 1.9rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .project-title {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 400;
+            margin-bottom: 1.2rem; color: var(--text-white);
+        }
+        .project-meta { font-size: 0.86rem; margin-bottom: 1.6rem; }
+        .meta-item {
+            margin-bottom: 0.85rem; padding-bottom: 0.85rem;
+            border-bottom: 1px solid var(--border-color);
+        }
         .meta-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .meta-label { font-weight: 700; color: var(--accent-green); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 0.3rem; display: block;}
+        .meta-label {
+            color: var(--accent-gold); text-transform: uppercase; font-size: 0.68rem;
+            letter-spacing: 0.16em; margin-bottom: 0.25rem; display: block;
+        }
         .meta-text { color: var(--text-muted); line-height: 1.5; }
 
         /* --- VEILLE --- */
-        .source-card { text-decoration: none; display: block; padding: 1.8rem; border-radius: 8px; background: rgba(30, 41, 59, 0.5); border: 1px solid var(--border-color); transition: var(--transition); position: relative; overflow: hidden;}
-        .source-card::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 4px; background: var(--accent-green); transform: scaleY(0); transition: transform 0.3s ease; transform-origin: bottom;}
-        .source-card:hover::before { transform: scaleY(1); }
-        .source-card:hover { background: rgba(30, 41, 59, 0.9); transform: translateX(5px);}
-        .source-card h4 { font-size: 1.1rem; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; transition: var(--transition);}
-        .source-card:hover h4 { color: var(--accent-green); }
-        .source-card p { font-size: 0.9rem; color: var(--text-muted); }
+        .source-card {
+            text-decoration: none; display: block; padding: 1.8rem;
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            transition: var(--transition); position: relative; overflow: hidden;
+        }
+        .source-card::after {
+            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 3px;
+            background: var(--accent-gold); transform: scaleY(0); transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+        .source-card:hover::after { transform: scaleY(1); }
+        .source-card:hover { border-color: var(--accent-gold-dark); transform: translateX(4px); }
+        .source-card h4 {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400;
+            color: var(--text-white); display: flex; justify-content: space-between;
+            align-items: center; margin-bottom: 0.4rem; transition: var(--transition);
+        }
+        .source-card:hover h4 { color: var(--accent-gold); }
+        .source-card p { font-size: 0.88rem; color: var(--text-muted); }
 
-        /* --- CONTACT & CV --- */
-        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+        /* --- CONTACT, LINKEDIN & CV --- */
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
         .contact-form input, .contact-form textarea {
-            width: 100%; padding: 1.1rem; border-radius: 8px; border: 1px solid var(--border-color);
-            background: rgba(15, 23, 42, 0.8); color: var(--text-main); font-family: inherit; font-size: 0.95rem; transition: var(--transition);
+            width: 100%; padding: 0.95rem 1.1rem; border: 1px solid var(--border-color);
+            background: var(--bg-body); color: var(--text-main); font-family: inherit;
+            font-size: 0.9rem; transition: var(--transition);
         }
-        .contact-form input:focus, .contact-form textarea:focus { 
-            outline: none; border-color: var(--accent-green); background: rgba(15, 23, 42, 1); 
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.1); transform: translateY(-2px);
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none; border-color: var(--accent-gold);
+            box-shadow: 0 0 12px rgba(200, 169, 110, 0.12);
         }
-        .cv-wrapper { width: 100%; height: 800px; border-radius: 12px; border: 1px solid var(--border-color); overflow: hidden; background: var(--bg-card); padding: 5px;}
-        .cv-wrapper iframe { width: 100%; height: 100%; border: none; border-radius: 8px; }
+        .cv-wrapper {
+            width: 100%; height: 780px; border: 1px solid var(--border-color);
+            overflow: hidden; background: var(--bg-card); padding: 6px;
+        }
+        .cv-wrapper iframe { width: 100%; height: 100%; border: none; }
 
-        footer { padding: 3rem 5%; text-align: center; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; margin-top: 4rem; background: rgba(15, 23, 42, 0.5); }
+        /* Carte LinkedIn */
+        .linkedin-box {
+            margin-top: 2rem; padding: 1.6rem; border: 1px solid var(--border-color);
+            background: var(--bg-card); display: flex; flex-direction: column; gap: 1rem;
+        }
+        .linkedin-head { display: flex; align-items: center; gap: 1rem; }
+        .linkedin-head img {
+            width: 54px; height: 54px; object-fit: cover; border: 1px solid var(--accent-gold);
+        }
+        .linkedin-head h4 {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+            color: var(--text-white); font-weight: 400;
+        }
+        .linkedin-head p { font-size: 0.8rem; color: var(--accent-gold); }
 
-        @media (max-width: 992px) {
-            .grid-2, .grid-3, .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
-            h1 { font-size: 3rem; }
-            .nav-links { display: none; } 
-            .hero-header-flex { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-            section { padding: 5rem 5%; }
+        footer {
+            padding: 2.5rem 4rem; border-top: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem; color: var(--text-muted); font-size: 0.72rem;
+            letter-spacing: 0.15em; text-transform: uppercase;
+        }
+        footer em {
+            font-family: 'Cormorant Garamond', serif; font-size: 1rem;
+            color: var(--accent-gold); text-transform: none; letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 1024px) {
+            nav { padding: 1rem 1.8rem; }
+            .burger { display: block; }
+            .nav-links {
+                position: absolute; top: 100%; left: 0; right: 0; flex-direction: column;
+                gap: 0; background: rgba(10, 10, 10, 0.98); border-bottom: 1px solid var(--border-color);
+                display: none; align-items: flex-start;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; padding: 1rem 1.8rem; width: 100%; }
+            .grid-2, .grid-3, .contact-layout { grid-template-columns: 1fr; gap: 2.2rem; }
+            section { padding: 5rem 1.6rem; }
+            footer { padding: 2rem 1.6rem; }
         }
     </style>
 </head>
@@ -269,86 +471,146 @@
 <div class="cursor-outline" id="cursor-outline"></div>
 
 <nav id="navbar">
-    <a href="#" class="logo">HAMZA<span>.MS</span></a>
-    <ul class="nav-links">
+    <a href="#hero" class="logo">HAMZA<span>.MS</span></a>
+    <button class="burger" id="burger-btn" aria-label="Menu">☰</button>
+    <ul class="nav-links" id="nav-links">
         <li><a href="#profil" class="hover-target">Profil</a></li>
+        <li><a href="#methode" class="hover-target">Méthode</a></li>
         <li><a href="#parcours" class="hover-target">Parcours</a></li>
-        <li><a href="#skills" class="hover-target">Expertise</a></li>
+        <li><a href="#skills" class="hover-target">Compétences</a></li>
         <li><a href="#projets" class="hover-target">Projets</a></li>
-        <li><a href="#e6" class="hover-target">Épreuve E6</a></li>
-        <li><a href="#synthese" class="hover-target">Synthèse</a></li> <!-- NOUVEAU LIEN MENU -->
+        <li><a href="#e6" class="hover-target">Dossiers</a></li>
         <li><a href="#veille" class="hover-target">Veille</a></li>
+        <li><a href="#cv" class="hover-target">CV</a></li>
         <li><a href="#contact" class="hover-target">Contact</a></li>
     </ul>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
     <div class="hero-content reveal">
         <div class="badge-status hover-target">
-            <div class="pulse"></div> 
-            <span>Disponible : CDD / CDI (Technicien Helpdesk N1/N2, Support IT)</span>
+            <div class="pulse"></div>
+            <span>Disponible en CDI / CDD — Technicien Helpdesk N1 & Support IT · Dreux (28) & Yvelines (78)</span>
         </div>
         
         <div class="hero-header-flex">
-            <img src="photo_ia.jpeg" alt="Hamza Mansouri Sandali" class="profile-pic hover-target">
+            <div class="profile-pic-wrap hover-target">
+                <img src="photo_ia.jpeg" alt="Hamza El Mansouri Sandali" class="profile-pic" onerror="this.src='https://via.placeholder.com/300x360/161616/c8a96e?text=photo_ia.jpeg'">
+            </div>
             <div class="name-text">
-                <h1>Mansouri Sandali <br><span>Hamza</span></h1>
+                <h1>El Mansouri<br>Sandali <span>Hamza</span></h1>
             </div>
         </div>
 
-        <div class="typewriter" id="typewriter-text"></div>
+        <div class="typewriter-wrap">
+            <div class="typewriter" id="typewriter-text"></div>
+        </div>
         
-        <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2.5rem; line-height: 1.7;">
-            Passionné par l'administration d'environnements critiques, je conçois, déploie et maintiens des infrastructures au service de projets techniques exigeants.
+        <p style="font-size: 1.02rem; color: var(--text-muted); max-width: 640px; margin-bottom: 2.4rem; line-height: 1.8;">
+            Diplômé en systèmes et réseaux (BTS SIO SISR), j'accompagne les utilisateurs au quotidien sur le secteur de <strong style="color: var(--text-white); font-weight: 400;">Dreux, des Yvelines (78) et d'Île-de-France</strong> : diagnostic rapide, résolution d'incidents N1/N2, gestion de parc GLPI et administration Active Directory.
         </p>
+
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="#projets" class="btn btn-primary hover-target">Explorer mes travaux</a>
-            <a href="#cv" class="btn btn-outline hover-target">Consulter mon CV</a>
+            <a href="#contact" class="btn btn-primary hover-target">Me contacter</a>
+            <a href="#cv" class="btn btn-outline hover-target">Prévisualiser & Télécharger mon CV</a>
+            <a href="#projets" class="btn btn-outline hover-target">Explorer mes réalisations</a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat-item"><b>06</b><span>Projets documentés</span></div>
+            <div class="stat-item"><b>08</b><span>Certifications & Modules</span></div>
+            <div class="stat-item"><b>N1/N2</b><span>Support & Infrastructures</span></div>
         </div>
     </div>
 </section>
 
-<!-- ... Les sections Profil, Parcours, Skills et Projets (E5) restent inchangées ... -->
+<!-- 01. PROFIL & MOBILITÉ -->
 <section id="profil">
     <div class="section-header reveal">
-        <span class="tagline">Introduction</span>
-        <h2>Profil & Atouts</h2>
+        <span class="tagline">01 — Introduction & Poste recherché</span>
+        <h2>Profil, Mobilité & Atouts</h2>
     </div>
-    <div class="grid-2">
+    <div class="grid-3">
         <div class="bento-card reveal hover-target">
-            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Soft Skills</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Ma capacité d'adaptation et ma rigueur me permettent de m'intégrer rapidement aux environnements critiques.</p>
+            <h3 class="serif" style="font-size: 1.5rem; font-weight: 400; margin-bottom: 0.8rem; color: var(--text-white);">Objectif CDI / CDD</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.2rem;">
+                Recherche active d'un poste de <strong style="color: var(--text-white);">Technicien Helpdesk N1 / Technicien Support Informatique</strong> (assistance utilisateurs à distance ou proximité).
+            </p>
             <div class="tag-container">
-                <span class="tag">Sens du service et de l'écoute</span>
-                <span class="tag">Adaptabilité</span>
-                <span class="tag">Autonomie et réactivité</span>
-                <span class="tag">Esprit d'équipe et communication</span>
-                <span class="tag">Curiosité technologique</span>
-                <span class="tag">Rigueur et organisation</span>
+                <span class="tag" style="border-color: var(--accent-gold); color: var(--accent-gold);">📍 Dreux & Agglomération (28)</span>
+                <span class="tag" style="border-color: var(--accent-gold); color: var(--accent-gold);">📍 Yvelines (78) & Île-de-France</span>
+                <span class="tag">🚗 Permis B — Véhiculé</span>
+                <span class="tag">⚡ Disponibilité immédiate</span>
             </div>
         </div>
+
         <div class="bento-card reveal hover-target">
-            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Langues</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Opérationnel dans des contextes internationaux ou pour l'analyse de documentation technique.</p>
+            <h3 class="serif" style="font-size: 1.5rem; font-weight: 400; margin-bottom: 0.8rem; color: var(--text-white);">Soft Skills</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.2rem;">
+                Ma capacité d'écoute, ma pédagogie et ma rigueur me permettent de rassurer les utilisateurs et de résoudre rapidement leurs incidents.
+            </p>
             <div class="tag-container">
-                <span class="tag" style="border-color: #f1f5f9; color: white;">🇫🇷 Français (Courant)</span>
-                <span class="tag" style="border-color: #f1f5f9; color: white;">🇸🇦 Arabe (Courant)</span>
-                <span class="tag" style="border-color: #f1f5f9; color: white;">🇪🇸 Espagnol (Courant)</span>
-                <span class="tag">🇬🇧 Anglais (Intermédiaire)</span>
+                <span class="tag">Sens du service et de l'écoute</span>
+                <span class="tag">Pédagogie utilisateur</span>
+                <span class="tag">Autonomie et réactivité</span>
+                <span class="tag">Esprit d'équipe</span>
+                <span class="tag">Rigueur et traçabilité</span>
+                <span class="tag">Adaptabilité</span>
+            </div>
+        </div>
+
+        <div class="bento-card reveal hover-target">
+            <h3 class="serif" style="font-size: 1.5rem; font-weight: 400; margin-bottom: 0.8rem; color: var(--text-white);">Langues</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.2rem;">
+                Opérationnel pour assister des collaborateurs multilingues et exploiter la documentation technique internationale.
+            </p>
+            <div class="tag-container">
+                <span class="tag" style="border-color: var(--text-white); color: var(--text-white);">🇫🇷 Français (Courant)</span>
+                <span class="tag" style="border-color: var(--text-white); color: var(--text-white);">🇸🇦 Arabe (Courant)</span>
+                <span class="tag" style="border-color: var(--text-white); color: var(--text-white);">🇪🇸 Espagnol (Courant)</span>
+                <span class="tag">🇬🇧 Anglais (Intermédiaire / Tech)</span>
             </div>
         </div>
     </div>
 </section>
 
+<!-- 02. MA MÉTHODE DE RÉSOLUTION -->
+<section id="methode">
+    <div class="section-header reveal">
+        <span class="tagline">02 — Support Utilisateur & Helpdesk</span>
+        <h2>Ma méthode de résolution</h2>
+    </div>
+    <div class="steps-grid reveal">
+        <div class="step-card hover-target">
+            <h4>Accueillir</h4>
+            <p>Écouter attentivement, reformuler sans jargon et qualifier le ticket : urgence, périmètre d'impact et utilisateur concerné.</p>
+        </div>
+        <div class="step-card hover-target">
+            <h4>Diagnostiquer</h4>
+            <p>Reproduire l'incident, vérifier méthodiquement les bases (réseau, session Active Directory, droits, matériel) et isoler la cause.</p>
+        </div>
+        <div class="step-card hover-target">
+            <h4>Résoudre</h4>
+            <p>Appliquer la solution à distance ou sur le poste, tester avec l'utilisateur et escalader en N2 avec un diagnostic complet si nécessaire.</p>
+        </div>
+        <div class="step-card hover-target">
+            <h4>Documenter</h4>
+            <p>Clôturer le ticket dans GLPI, tracer l'intervention réalisée et enrichir la base de connaissances pour l'équipe.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 03. EXPÉRIENCES & CERTIFICATIONS -->
 <section id="parcours">
     <div class="section-header reveal">
-        <span class="tagline">Évolution</span>
+        <span class="tagline">03 — Évolution & Terrain</span>
         <h2>Expériences & Certifications</h2>
     </div>
     
     <div class="grid-2">
         <div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 2.5rem; color: var(--text-muted); font-weight: 500;" class="reveal">Expériences Professionnelles</h3>
+            <h3 class="serif reveal" style="font-size: 1.5rem; margin-bottom: 2.2rem; color: var(--accent-gold); font-weight: 400;">Expériences Professionnelles</h3>
             <div class="timeline">
                 <div class="timeline-item reveal hover-target">
                     <span class="tl-date">Mai - Juillet 2025</span>
@@ -392,12 +654,12 @@
                 </div>
             </div>
 
-            <h3 style="font-size: 1.4rem; margin-top: 4rem; margin-bottom: 2.5rem; color: var(--text-muted); font-weight: 500;" class="reveal">Éducation</h3>
+            <h3 class="serif reveal" style="font-size: 1.5rem; margin-top: 3.5rem; margin-bottom: 2.2rem; color: var(--accent-gold); font-weight: 400;">Formation Académique</h3>
             <div class="timeline">
                 <div class="timeline-item reveal hover-target">
                     <span class="tl-date">2024 - 2026</span>
                     <h4 class="tl-title">BTS SIO (Option SISR)</h4>
-                    <p class="tl-subtitle">INSTA Paris 5</p>
+                    <p class="tl-subtitle">INSTA Paris 5 — Solutions d'Infrastructure, Systèmes et Réseaux</p>
                 </div>
                 <div class="timeline-item reveal hover-target">
                     <span class="tl-date">2023 - 2024</span>
@@ -407,30 +669,30 @@
                 <div class="timeline-item reveal hover-target">
                     <span class="tl-date">2020 - 2023</span>
                     <h4 class="tl-title">Baccalauréat Général (NSI, Maths)</h4>
-                    <p class="tl-subtitle">Lycée Rotrou Dreux</p>
+                    <p class="tl-subtitle">Lycée Rotrou | Dreux (28)</p>
                 </div>
             </div>
         </div>
 
         <div>
-            <div class="bento-card reveal hover-target" style="position: sticky; top: 120px;">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: white;">Certifications Validées</h3>
-                <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">Consultez mes attestations et certifications officielles.</p>
+            <div class="bento-card reveal hover-target" style="position: sticky; top: 110px;">
+                <h3 class="serif" style="font-size: 1.65rem; font-weight: 400; margin-bottom: 0.8rem; color: var(--text-white);">Certifications Validées</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.8rem; font-size: 0.9rem;">Cliquez pour consulter mes attestations et certificats officiels.</p>
                 
-                <div style="display: flex; flex-direction: column; gap: 1rem;">
-                    <h4 style="color: var(--accent-green); font-size: 0.85rem; text-transform: uppercase; margin-top: 1rem; letter-spacing: 1px;">Cybersécurité & Systèmes</h4>
-                    <a href="https://drive.google.com/file/d/1YN5eS9S8r0a8ibE5_EDqksoj6Ctlp3pl/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target" style="justify-content: flex-start;">🔒 Introduction à la cybersécurité (Cisco)</a>
-                    <a href="https://drive.google.com/file/d/1o-57fQLPwVa-a5T-eEhfb2FLSSjqc3MC/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target" style="justify-content: flex-start;">🏛️ Attestation SecNumacadémie (ANSSI)</a>
-                    <a href="LIEN_CERTIF_NETWORKING" target="_blank" class="btn btn-outline btn-small hover-target" style="justify-content: flex-start;">🛡️ Networking Essentials</a>
+                <div style="display: flex; flex-direction: column; gap: 0.9rem;">
+                    <h4 style="color: var(--accent-gold); font-size: 0.72rem; text-transform: uppercase; margin-top: 0.5rem; letter-spacing: 0.2em;">Cybersécurité & Réseaux</h4>
+                    <a href="https://drive.google.com/file/d/1YN5eS9S8r0a8ibE5_EDqksoj6Ctlp3pl/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target" style="justify-content: flex-start;">🔒 Introduction à la cybersécurité (Cisco)</a>
+                    <a href="https://drive.google.com/file/d/1o-57fQLPwVa-a5T-eEhfb2FLSSjqc3MC/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target" style="justify-content: flex-start;">🏛️ Attestation SecNumacadémie (ANSSI)</a>
+                    <a href="#parcours" class="btn btn-outline btn-small hover-target" style="justify-content: flex-start;">🛡️ Networking Essentials (Cisco)</a>
 
-                    <h4 style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-top: 1.5rem; letter-spacing: 1px;">Conformité RGPD (CNIL)</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Parcours Expert (5 Modules validés)</p>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
-                        <a href="https://drive.google.com/file/d/1_fdA4rCcgm4nmfMpNCXU_p941kNQFfiW/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target">Module 1</a>
-                        <a href="https://drive.google.com/file/d/1xkXkNzBPDWUGCLSWzaN8DvDkDmZA0iOq/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target">Module 2</a>
-                        <a href="https://drive.google.com/file/d/1CPpjkMpI-r0xygQcQEni_Ieid3LuM-Fl/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target">Module 3</a>
-                        <a href="https://drive.google.com/file/d/14mwagD_zZaQ4TelFPxKUaTM_LafAjvzy/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target">Module 4</a>
-                        <a href="https://drive.google.com/file/d/1bMhvfDhPF5tEqtb4-Ei60A3cUOBB7c3Z/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target" style="grid-column: span 2;">Module 5</a>
+                    <h4 style="color: var(--accent-gold); font-size: 0.72rem; text-transform: uppercase; margin-top: 1.4rem; letter-spacing: 0.2em;">Conformité RGPD (CNIL)</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Parcours complet — 5 Modules officiels validés :</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <a href="https://drive.google.com/file/d/1_fdA4rCcgm4nmfMpNCXU_p941kNQFfiW/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target">Module 1</a>
+                        <a href="https://drive.google.com/file/d/1xkXkNzBPDWUGCLSWzaN8DvDkDmZA0iOq/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target">Module 2</a>
+                        <a href="https://drive.google.com/file/d/1CPpjkMpI-r0xygQcQEni_Ieid3LuM-Fl/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target">Module 3</a>
+                        <a href="https://drive.google.com/file/d/14mwagD_zZaQ4TelFPxKUaTM_LafAjvzy/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target">Module 4</a>
+                        <a href="https://drive.google.com/file/d/1bMhvfDhPF5tEqtb4-Ei60A3cUOBB7c3Z/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target" style="grid-column: span 2;">Module 5</a>
                     </div>
                 </div>
             </div>
@@ -438,59 +700,61 @@
     </div>
 </section>
 
+<!-- 04. COMPÉTENCES TECHNIQUES (BARRES AUTOMATIQUES AU DÉFILEMENT) -->
 <section id="skills" class="reveal">
     <div class="section-header">
-        <span class="tagline">Tech Stack</span>
+        <span class="tagline">04 — Savoir-faire opérationnel</span>
         <h2>Compétences Techniques</h2>
     </div>
     <div class="bento-card hover-target">
         <div class="skills-container">
             <div class="skill-group">
-                <h3>Systèmes & Outils</h3>
+                <h3>Systèmes, Support & Outils</h3>
                 <div class="skill-bar-wrap">
-                    <div class="skill-info"><span>Windows Server, 10/11, macOS, Linux</span><span>90%</span></div>
+                    <div class="skill-info"><span>Ticketing, Parc & Inventaire (GLPI)</span><span>95%</span></div>
+                    <div class="skill-track"><div class="skill-fill" data-percent="95%"></div></div>
+                </div>
+                <div class="skill-bar-wrap">
+                    <div class="skill-info"><span>Windows 10/11, Windows Server, macOS, Linux</span><span>90%</span></div>
                     <div class="skill-track"><div class="skill-fill" data-percent="90%"></div></div>
+                </div>
+                <div class="skill-bar-wrap">
+                    <div class="skill-info"><span>Services (Active Directory, GPO, DNS, DHCP)</span><span>85%</span></div>
+                    <div class="skill-track"><div class="skill-fill" data-percent="85%"></div></div>
                 </div>
                 <div class="skill-bar-wrap">
                     <div class="skill-info"><span>Virtualisation (VMware, Proxmox)</span><span>85%</span></div>
                     <div class="skill-track"><div class="skill-fill" data-percent="85%"></div></div>
                 </div>
-                <div class="skill-bar-wrap">
-                    <div class="skill-info"><span>Services (DHCP, DNS, AD DS, GPO)</span><span>85%</span></div>
-                    <div class="skill-track"><div class="skill-fill" data-percent="85%"></div></div>
-                </div>
-                <div class="skill-bar-wrap">
-                    <div class="skill-info"><span>Ticketing & Inventaire (GLPI)</span><span>95%</span></div>
-                    <div class="skill-track"><div class="skill-fill" data-percent="95%"></div></div>
-                </div>
             </div>
             <div class="skill-group">
-                <h3>Réseaux & Sécurité</h3>
+                <h3>Réseaux, Matériel & Sécurité</h3>
+                <div class="skill-bar-wrap">
+                    <div class="skill-info"><span>Déploiement Postes, Logiciels & Imprimantes</span><span>95%</span></div>
+                    <div class="skill-track"><div class="skill-fill" data-percent="95%"></div></div>
+                </div>
                 <div class="skill-bar-wrap">
                     <div class="skill-info"><span>LAN, VLAN, WAN, TCP/IP, Wi-Fi</span><span>90%</span></div>
                     <div class="skill-track"><div class="skill-fill" data-percent="90%"></div></div>
                 </div>
                 <div class="skill-bar-wrap">
-                    <div class="skill-info"><span>Routage (RIP, OSPF) & NAT, SSH</span><span>65%</span></div>
-                    <div class="skill-track"><div class="skill-fill" data-percent="65%"></div></div>
+                    <div class="skill-info"><span>Sécurité (Pare-feu, Antivirus, VPN, Droits)</span><span>75%</span></div>
+                    <div class="skill-track"><div class="skill-fill" data-percent="75%"></div></div>
                 </div>
                 <div class="skill-bar-wrap">
-                    <div class="skill-info"><span>Sécurité (Pare-feu, AntiVirus, VPN)</span><span>70%</span></div>
+                    <div class="skill-info"><span>Routage (RIP, OSPF), NAT & SSH</span><span>70%</span></div>
                     <div class="skill-track"><div class="skill-fill" data-percent="70%"></div></div>
-                </div>
-                <div class="skill-bar-wrap">
-                    <div class="skill-info"><span>Installations (Logiciels, imprimantes)</span><span>95%</span></div>
-                    <div class="skill-track"><div class="skill-fill" data-percent="95%"></div></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- 05. RÉALISATIONS TECHNIQUES -->
 <section id="projets">
     <div class="section-header reveal">
-        <span class="tagline">Situations Professionnelles</span>
-        <h2>Réalisations Techniques (E5)</h2>
+        <span class="tagline">05 — Mises en situation professionnelles</span>
+        <h2>Réalisations Techniques</h2>
     </div>
 
     <div class="project-grid">
@@ -507,7 +771,7 @@
                         <div class="meta-item"><span class="meta-label">Validation</span><span class="meta-text">Tests de connexion utilisateur et application des stratégies de groupe.</span></div>
                     </div>
                 </div>
-                <a href="https://drive.google.com/file/d/1TT8x3_BDxyuP3LXgdL7oDM9qbzfTp4o0/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target" style="width:100%;">Tech Doc</a>
+                <a href="https://drive.google.com/file/d/1TT8x3_BDxyuP3LXgdL7oDM9qbzfTp4o0/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target" style="width:100%;">Voir la documentation PDF →</a>
             </div>
         </div>
 
@@ -524,7 +788,7 @@
                         <div class="meta-item"><span class="meta-label">Validation</span><span class="meta-text">Renouvellement manuel du bail et tests de connectivité globale.</span></div>
                     </div>
                 </div>
-                <a href="https://drive.google.com/file/d/1LuxZ0un3SvNRpoe-0xZs8Nwfe_1Ogi_c/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target" style="width:100%;">Tech Doc</a>
+                <a href="https://drive.google.com/file/d/1LuxZ0un3SvNRpoe-0xZs8Nwfe_1Ogi_c/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target" style="width:100%;">Voir la documentation PDF →</a>
             </div>
         </div>
 
@@ -541,7 +805,7 @@
                         <div class="meta-item"><span class="meta-label">Validation</span><span class="meta-text">Tests d'accès croisés pour les services Enedis et MSA.</span></div>
                     </div>
                 </div>
-                <a href="https://drive.google.com/file/d/1yf9Siq7wWggyoEPg6NiTrKr3pnGzXk1N/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target" style="width:100%;">Tech Doc</a>
+                <a href="https://drive.google.com/file/d/1yf9Siq7wWggyoEPg6NiTrKr3pnGzXk1N/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target" style="width:100%;">Voir la documentation PDF →</a>
             </div>
         </div>
 
@@ -558,7 +822,7 @@
                         <div class="meta-item"><span class="meta-label">Validation</span><span class="meta-text">Interface opérationnelle et base de données synchronisée.</span></div>
                     </div>
                 </div>
-                <a href="https://drive.google.com/file/d/1VlbyEbPe0WkR-hIGqdqllY6J8Quv2tl9/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target" style="width:100%;">Tech Doc</a>
+                <a href="https://drive.google.com/file/d/1VlbyEbPe0WkR-hIGqdqllY6J8Quv2tl9/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target" style="width:100%;">Voir la documentation PDF →</a>
             </div>
         </div>
 
@@ -575,7 +839,7 @@
                         <div class="meta-item"><span class="meta-label">Validation</span><span class="meta-text">Remontée automatique des assets et authentification centralisée.</span></div>
                     </div>
                 </div>
-                <a href="https://drive.google.com/file/d/1iLFhp1kkictX4nDswXl_Bvv0XVDBfACe/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target" style="width:100%;">Tech Doc</a>
+                <a href="https://drive.google.com/file/d/1iLFhp1kkictX4nDswXl_Bvv0XVDBfACe/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target" style="width:100%;">Voir la documentation PDF →</a>
             </div>
         </div>
 
@@ -592,211 +856,243 @@
                         <div class="meta-item"><span class="meta-label">Validation</span><span class="meta-text">Pings inter-zones autorisés et filtrage des zones interdites.</span></div>
                     </div>
                 </div>
-                <a href="https://drive.google.com/file/d/1Gi_UjR1JNM82_umIDLQpQ4kb5kIVKWsJ/view?usp=sharing" target="_blank" class="btn btn-outline btn-small hover-target" style="width:100%;">Tech Doc</a>
+                <a href="https://drive.google.com/file/d/1Gi_UjR1JNM82_umIDLQpQ4kb5kIVKWsJ/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline btn-small hover-target" style="width:100%;">Voir la documentation PDF →</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- --- SECTION E6 --- -->
+<!-- 06. DOSSIERS TECHNIQUES & SÉCURITÉ (ANCIENNEMENT E6, CONSERVÉ AVEC PRÉVISUALISATION) -->
 <section id="e6" class="reveal">
     <div class="section-header">
-        <span class="tagline">Cybersécurité & Professionnalisation</span>
-        <h2>Épreuve E6</h2>
-        <p style="color: var(--text-muted); margin-top: 1rem; max-width: 800px; font-size: 1.1rem;">
-            Dossiers relatifs à mon parcours de professionnalisation et au traitement des incidents de cybersécurité.
+        <span class="tagline">06 — Administration & Cybersécurité</span>
+        <h2>Dossiers d'Infrastructure & Traitement d'Incidents</h2>
+        <p style="color: var(--text-muted); margin-top: 0.8rem; max-width: 780px; font-size: 1rem;">
+            Études de cas complètes portant sur la gestion de parc informatique, la haute disponibilité et la réponse aux incidents de sécurité.
         </p>
     </div>
     
     <div class="grid-2">
-        <div class="bento-card hover-target" style="padding: 1.5rem; display: flex; flex-direction: column;">
-            <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem;">Dossier E6 - Partie 1</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Présentation de l'organisation et gestion du patrimoine informatique.</p>
+        <div class="bento-card hover-target" style="padding: 1.6rem; display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                <h3 class="serif" style="color: var(--text-white); font-size: 1.4rem; font-weight: 400;">Dossier Technique — Partie 1</h3>
+                <a href="https://drive.google.com/file/d/1xVEEOwwikvGBstyPB_fOWwpJf2_XPRgK/view?usp=sharing" target="_blank" rel="noopener" style="font-size: 0.72rem; color: var(--accent-gold); text-decoration: none; text-transform: uppercase; letter-spacing: 0.12em;">Plein écran ↗</a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.2rem;">Présentation de l'organisation et gestion du patrimoine informatique.</p>
             <div class="cv-wrapper" style="height: 500px; flex-grow: 1;">
-                <iframe src="https://drive.google.com/file/d/1xVEEOwwikvGBstyPB_fOWwpJf2_XPRgK/preview" style="width: 100%; height: 100%; border: none;"></iframe>
+                <iframe src="https://drive.google.com/file/d/1xVEEOwwikvGBstyPB_fOWwpJf2_XPRgK/preview" title="Dossier Partie 1"></iframe>
             </div>
         </div>
         
-        <div class="bento-card hover-target" style="padding: 1.5rem; display: flex; flex-direction: column;">
-            <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem;">Dossier E6 - Partie 2</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Réponse aux incidents de sécurité et documentation technique.</p>
+        <div class="bento-card hover-target" style="padding: 1.6rem; display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                <h3 class="serif" style="color: var(--text-white); font-size: 1.4rem; font-weight: 400;">Dossier Technique — Partie 2</h3>
+                <a href="https://drive.google.com/file/d/1yr5d3HuV2abg7Cm65wak6JCqj-7YNeFu/view?usp=sharing" target="_blank" rel="noopener" style="font-size: 0.72rem; color: var(--accent-gold); text-decoration: none; text-transform: uppercase; letter-spacing: 0.12em;">Plein écran ↗</a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.2rem;">Réponse aux incidents de sécurité et documentation technique.</p>
             <div class="cv-wrapper" style="height: 500px; flex-grow: 1;">
-                <iframe src="https://drive.google.com/file/d/1yr5d3HuV2abg7Cm65wak6JCqj-7YNeFu/preview" style="width: 100%; height: 100%; border: none;"></iframe>
+                <iframe src="https://drive.google.com/file/d/1yr5d3HuV2abg7Cm65wak6JCqj-7YNeFu/preview" title="Dossier Partie 2"></iframe>
             </div>
         </div>
     </div>
 </section>
 
-<!-- --- NOUVELLE SECTION TABLEAU DE SYNTHESE EN PDF --- -->
-<section id="synthese" class="reveal">
-    <div class="section-header">
-        <span class="tagline">Bilan des Compétences</span>
-        <h2>Tableau de Synthèse (BTS SIO)</h2>
-        <p style="color: var(--text-muted); margin-top: 1rem; max-width: 800px; font-size: 1.1rem;">
-            Document officiel récapitulant l'ensemble de mes réalisations professionnelles et la validation des différents blocs de compétences du diplôme.
-        </p>
-    </div>
-    
-    <div class="cv-wrapper bento-card hover-target" style="height: 700px;">
-        <!-- Remplacer "LIEN_DE_TON_TABLEAU_PDF" par le vrai lien de ton PDF (n'oublie pas le /preview à la fin) -->
-        <iframe src="LIEN_DE_TON_TABLEAU_PDF/preview" style="width: 100%; height: 100%; border: none;"></iframe>
-    </div>
-</section>
-
+<!-- 07. VEILLE TECHNOLOGIQUE -->
 <section id="veille" class="reveal">
     <div class="section-header">
-        <span class="tagline">Prospective & Innovation</span>
+        <span class="tagline">07 — Prospective & Innovation</span>
         <h2>Veille Technologique : L'IA & La Défense</h2>
-        <p style="color: var(--text-muted); margin-top: 1rem; max-width: 800px; font-size: 1.1rem;">
+        <p style="color: var(--text-muted); margin-top: 0.8rem; max-width: 800px; font-size: 1rem;">
             Analyse de l'intégration de l'intelligence artificielle dans les systèmes de combat et la cybersécurité des infrastructures critiques.
         </p>
     </div>
 
-    <div class="grid-3" style="margin-bottom: 3rem;">
+    <div class="grid-3" style="margin-bottom: 2.5rem;">
         <div class="bento-card hover-target" style="padding: 2rem;">
-            <h4 style="color: var(--accent-green); margin-bottom: 1rem; font-size: 1.2rem;">❓ Pourquoi ce thème ?</h4>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">
-                L'IA bouleverse les équilibres stratégiques. Face à l'automatisation des cyberattaques (malwares adaptatifs, phishing génératif), les mécanismes de défense traditionnels ne suffisent plus. Il est crucial pour un technicien réseau d'anticiper comment l'IA est utilisée pour infiltrer mais surtout pour <strong>sécuriser proactivement</strong> les SI critiques (SOC, SIEM cognitifs).
+            <h4 class="serif" style="color: var(--accent-gold); margin-bottom: 0.8rem; font-size: 1.35rem; font-weight: 400;">❓ Pourquoi ce thème ?</h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                L'IA bouleverse les équilibres stratégiques. Face à l'automatisation des cyberattaques (malwares adaptatifs, phishing génératif), les mécanismes de défense traditionnels ne suffisent plus. Il est crucial pour un technicien réseau d'anticiper comment l'IA est utilisée pour infiltrer mais surtout pour <strong style="color: var(--text-white);">sécuriser proactivement</strong> les SI critiques (SOC, SIEM cognitifs).
             </p>
         </div>
         
         <div class="bento-card hover-target" style="padding: 2rem;">
-            <h4 style="color: var(--accent-green); margin-bottom: 1rem; font-size: 1.2rem;">🎯 Qu'est-ce que ça rapporte ?</h4>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">
-                <strong>Professionnellement :</strong> Cela me permet d'anticiper les futures normes de sécurité, de comprendre les mécanismes de détection comportementale et d'être force de proposition sur le durcissement d'une infrastructure.<br><br>
-                <strong>Personnellement :</strong> Une véritable passion pour les enjeux de souveraineté numérique, de géopolitique cyber et l'envie constante d'évoluer dans des environnements à haute exigence (OSINT, défense nationale).
+            <h4 class="serif" style="color: var(--accent-gold); margin-bottom: 0.8rem; font-size: 1.35rem; font-weight: 400;">🎯 Qu'est-ce que ça rapporte ?</h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                <strong style="color: var(--text-white);">Professionnellement :</strong> Cela me permet d'anticiper les futures normes de sécurité, de comprendre les mécanismes de détection comportementale et d'être force de proposition sur le durcissement d'une infrastructure.<br><br>
+                <strong style="color: var(--text-white);">Personnellement :</strong> Une véritable passion pour les enjeux de souveraineté numérique, de géopolitique cyber et l'envie constante d'évoluer dans des environnements à haute exigence.
             </p>
         </div>
         
         <div class="bento-card hover-target" style="padding: 2rem;">
-            <h4 style="color: var(--accent-green); margin-bottom: 1rem; font-size: 1.2rem;">⚙️ Ma stratégie de veille</h4>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">
+            <h4 class="serif" style="color: var(--accent-gold); margin-bottom: 0.8rem; font-size: 1.35rem; font-weight: 400;">⚙️ Ma stratégie de veille</h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
                 J'applique une stratégie hybride (Pull & Push) :<br>
-                • <strong>Agrégation (Pull) :</strong> Utilisation de <em>Feedly</em> pour centraliser les flux RSS d'organismes de référence (ANSSI, CERT-FR, BleepingComputer, Ministère des Armées).<br>
-                • <strong>Alertes (Push) :</strong> Configuration de <em>Google Alerts</em> sur des mots-clés spécifiques ("IA Défense", "Cyberwarfare").<br>
-                • <strong>Imprégnation :</strong> Écoute active de podcasts spécialisés (ex: <em>NoLimitSecu</em>) et suivi d'experts sur LinkedIn.
+                • <strong style="color: var(--text-white);">Agrégation (Pull) :</strong> Utilisation de <em>Feedly</em> pour centraliser les flux RSS d'organismes de référence (ANSSI, CERT-FR, BleepingComputer, Ministère des Armées).<br>
+                • <strong style="color: var(--text-white);">Alertes (Push) :</strong> Configuration de <em>Google Alerts</em> sur des mots-clés spécifiques ("IA Défense", "Cyberwarfare").<br>
+                • <strong style="color: var(--text-white);">Imprégnation :</strong> Écoute active de podcasts spécialisés (<em>NoLimitSecu</em>) et suivi d'experts sur LinkedIn.
             </p>
         </div>
     </div>
 
-    <div class="grid-2" style="margin-bottom: 3rem;">
+    <div class="grid-2" style="margin-bottom: 2.5rem;">
         <div class="bento-card hover-target">
-            <h3 style="color: var(--accent-green); margin-bottom: 2rem; font-size: 1.4rem;">🛡️ Enjeux Stratégiques & Cyber</h3>
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <h3 class="serif" style="color: var(--accent-gold); margin-bottom: 1.6rem; font-size: 1.5rem; font-weight: 400;">🛡️ Enjeux Stratégiques & Cyber</h3>
+            <div style="display: flex; flex-direction: column; gap: 1.4rem;">
                 <div>
-                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 5px;">Accélération du cycle OODA</h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">L'IA permet de traiter des téraoctets de données en temps réel pour réduire le délai entre l'Observation et l'Action (cycle OODA).</p>
+                    <h4 style="color: var(--text-white); font-size: 1rem; font-weight: 500; margin-bottom: 4px;">Accélération du cycle OODA</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">L'IA permet de traiter des téraoctets de données en temps réel pour réduire le délai entre l'Observation et l'Action (cycle OODA).</p>
                 </div>
                 <div>
-                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 5px;">Cyberdéfense prédictive</h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Utilisation du Machine Learning pour identifier des signaux faibles d'intrusion (APT) et automatiser la réponse aux incidents.</p>
+                    <h4 style="color: var(--text-white); font-size: 1rem; font-weight: 500; margin-bottom: 4px;">Cyberdéfense prédictive</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Utilisation du Machine Learning pour identifier des signaux faibles d'intrusion (APT) et automatiser la réponse aux incidents.</p>
                 </div>
                 <div>
-                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 5px;">Souveraineté des modèles</h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Garantir l'autonomie stratégique française en développant des IA souveraines, non dépendantes de solutions étrangères.</p>
+                    <h4 style="color: var(--text-white); font-size: 1rem; font-weight: 500; margin-bottom: 4px;">Souveraineté des modèles</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Garantir l'autonomie stratégique française en développant des IA souveraines, non dépendantes de solutions étrangères.</p>
                 </div>
             </div>
         </div>
 
         <div class="bento-card hover-target">
-            <h3 style="color: #f1f5f9; margin-bottom: 2rem; font-size: 1.4rem;">📡 Flux d'actualités (Direct 2026)</h3>
-            <div style="max-height: 380px; overflow-y: auto; padding-right: 15px;">
-                <div style="background: rgba(15, 23, 42, 0.4); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 3px solid var(--accent-green);">
-                    <span style="font-size: 0.8rem; color: var(--accent-green); font-weight: 700; text-transform: uppercase;">20 AVRIL 2026</span>
-                    <h4 style="font-size: 1.05rem; color: white; margin: 8px 0;">NATO : Déploiement de l'IA pour la sécurisation des liaisons satellites.</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Algorithmes de détection de brouillage intelligent sur les bandes KA/KU.</p>
+            <h3 class="serif" style="color: var(--text-white); margin-bottom: 1.6rem; font-size: 1.5rem; font-weight: 400;">📡 Flux d'actualités (Direct 2026)</h3>
+            <div style="max-height: 360px; overflow-y: auto; padding-right: 10px;">
+                <div style="background: var(--bg-alt); padding: 1.3rem; margin-bottom: 1rem; border-left: 2px solid var(--accent-gold);">
+                    <span style="font-size: 0.7rem; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase;">20 AVRIL 2026</span>
+                    <h4 style="font-size: 1rem; color: var(--text-white); font-weight: 400; margin: 6px 0;">NATO : Déploiement de l'IA pour la sécurisation des liaisons satellites.</h4>
+                    <p style="font-size: 0.86rem; color: var(--text-muted);">Algorithmes de détection de brouillage intelligent sur les bandes KA/KU.</p>
                 </div>
-                <div style="background: rgba(15, 23, 42, 0.4); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 3px solid var(--accent-green);">
-                    <span style="font-size: 0.8rem; color: var(--accent-green); font-weight: 700; text-transform: uppercase;">15 MARS 2026</span>
-                    <h4 style="font-size: 1.05rem; color: white; margin: 8px 0;">Ministère des Armées : Rapport sur la maintenance prédictive SCORPION.</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">L'IA réduit de 30% l'indisponibilité technique des blindés de nouvelle génération.</p>
+                <div style="background: var(--bg-alt); padding: 1.3rem; margin-bottom: 1rem; border-left: 2px solid var(--accent-gold);">
+                    <span style="font-size: 0.7rem; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase;">15 MARS 2026</span>
+                    <h4 style="font-size: 1rem; color: var(--text-white); font-weight: 400; margin: 6px 0;">Ministère des Armées : Rapport sur la maintenance prédictive SCORPION.</h4>
+                    <p style="font-size: 0.86rem; color: var(--text-muted);">L'IA réduit de 30% l'indisponibilité technique des blindés de nouvelle génération.</p>
                 </div>
-                <div style="background: rgba(15, 23, 42, 0.4); padding: 1.5rem; border-radius: 8px; border-left: 3px solid var(--accent-green);">
-                    <span style="font-size: 0.8rem; color: var(--accent-green); font-weight: 700; text-transform: uppercase;">02 FÉVRIER 2026</span>
-                    <h4 style="font-size: 1.05rem; color: white; margin: 8px 0;">ANSSI : Guide "IA & Sécurité des Systèmes Industriels".</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Nouvelles recommandations pour protéger les infrastructures critiques contre les cyber-attaques dopées à l'IA.</p>
+                <div style="background: var(--bg-alt); padding: 1.3rem; border-left: 2px solid var(--accent-gold);">
+                    <span style="font-size: 0.7rem; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase;">02 FÉVRIER 2026</span>
+                    <h4 style="font-size: 1rem; color: var(--text-white); font-weight: 400; margin: 6px 0;">ANSSI : Guide "IA & Sécurité des Systèmes Industriels".</h4>
+                    <p style="font-size: 0.86rem; color: var(--text-muted);">Nouvelles recommandations pour protéger les infrastructures critiques contre les cyber-attaques dopées à l'IA.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <h3 style="margin-bottom: 2rem; font-size: 1.3rem; font-weight: 600; color: var(--text-muted);">Sources Officielles Vérifiées</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-        <a href="https://www.defense.gouv.fr/aid/nos-expertises/intelligence-artificielle" target="_blank" class="source-card bento-card hover-target">
+    <h3 class="serif" style="margin-bottom: 1.4rem; font-size: 1.4rem; font-weight: 400; color: var(--text-white);">Sources Officielles Vérifiées</h3>
+    <div class="grid-3">
+        <a href="https://www.defense.gouv.fr/aid/nos-expertises/intelligence-artificielle" target="_blank" rel="noopener" class="source-card bento-card hover-target">
             <h4>L'IA de Défense (AID) <span>↗</span></h4>
             <p>Stratégie et projets de l'Agence de l'Innovation de Défense.</p>
         </a>
-        <a href="https://www.defense.gouv.fr/nos-enjeux/intelligence-artificielle" target="_blank" class="source-card bento-card hover-target">
+        <a href="https://www.defense.gouv.fr/nos-enjeux/intelligence-artificielle" target="_blank" rel="noopener" class="source-card bento-card hover-target">
             <h4>Enjeux de Souveraineté <span>↗</span></h4>
             <p>Comprendre la position française sur l'IA et l'autonomie stratégique.</p>
         </a>
-        <a href="https://www.cyber.gouv.fr/" target="_blank" class="source-card bento-card hover-target">
+        <a href="https://www.cyber.gouv.fr/" target="_blank" rel="noopener" class="source-card bento-card hover-target">
             <h4>ANSSI <span>↗</span></h4>
             <p>Actualité de la menace cyber et guides de sécurisation nationaux.</p>
         </a>
     </div>
 </section>
 
+<!-- 08. CURRICULUM VITAE (PRÉVISUALISABLE + TÉLÉCHARGEABLE) -->
 <section id="cv" class="reveal">
-    <div class="section-header">
-        <span class="tagline">Documentation Officielle</span>
-        <h2>Curriculum Vitae</h2>
+    <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem;">
+        <div>
+            <span class="tagline">08 — Documentation Officielle</span>
+            <h2>Curriculum Vitae</h2>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://drive.google.com/file/d/1ivxDubL-f7AUDbfutceEgdeeF9AZ6SkM/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline hover-target">👁 Ouvrir dans un nouvel onglet</a>
+            <a href="https://drive.google.com/uc?export=download&id=1ivxDubL-f7AUDbfutceEgdeeF9AZ6SkM" class="btn btn-primary hover-target">↓ Télécharger mon CV (PDF)</a>
+        </div>
     </div>
     <div class="cv-wrapper bento-card hover-target">
-        <iframe src="https://drive.google.com/file/d/1ivxDubL-f7AUDbfutceEgdeeF9AZ6SkM/preview"></iframe>
+        <iframe src="https://drive.google.com/file/d/1ivxDubL-f7AUDbfutceEgdeeF9AZ6SkM/preview" title="CV Hamza El Mansouri Sandali"></iframe>
     </div>
 </section>
 
+<!-- 09. CONTACT & LINKEDIN -->
 <section id="contact" class="reveal">
     <div class="contact-layout">
         <div>
-            <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 2rem;">Construisons<br>l'avenir technique.</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 3rem; max-width: 400px; line-height: 1.7;">
-                Je suis disponible immédiatement pour sécuriser, optimiser et gérer vos infrastructures informatiques. Discutons de vos besoins.
+            <span class="tagline">09 — Recrutement & Échange</span>
+            <h2 style="font-size: clamp(2.3rem, 4.5vw, 3.4rem); line-height: 1.1; margin-bottom: 1.5rem;">Construisons<br>votre support IT.</h2>
+            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 2.2rem; max-width: 460px; line-height: 1.75;">
+                Disponible immédiatement en <strong style="color: var(--text-white);">CDI ou CDD</strong> pour un poste de <strong style="color: var(--text-white);">Technicien Helpdesk N1 / Technicien Support</strong> sur le secteur de <strong style="color: var(--accent-gold);">Dreux (28), des Yvelines (78) et d'Île-de-France</strong>.
             </p>
-            <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.9rem;">
                 <a href="mailto:hamza.mansourisandali@gmail.com" class="btn btn-outline hover-target" style="justify-content: flex-start;">✉️ hamza.mansourisandali@gmail.com</a>
                 <a href="tel:+33602800516" class="btn btn-outline hover-target" style="justify-content: flex-start;">📞 06 02 80 05 16</a>
-                <a href="https://www.linkedin.com/in/hamzams23/" target="_blank" class="btn btn-outline hover-target" style="justify-content: flex-start;">🔗 Profil LinkedIn</a>
+            </div>
+
+            <!-- Carte LinkedIn intégrée -->
+            <div class="linkedin-box bento-card hover-target">
+                <div class="linkedin-head">
+                    <img src="photo_ia.jpeg" alt="Hamza El Mansouri Sandali" onerror="this.src='https://via.placeholder.com/100x100/161616/c8a96e?text=H'">
+                    <div>
+                        <h4>Hamza El Mansouri Sandali</h4>
+                        <p>Technicien Support Informatique / Helpdesk N1 · SISR</p>
+                    </div>
+                </div>
+                <p style="font-size: 0.84rem; color: var(--text-muted);">
+                    Retrouvez mon parcours complet, mes recommandations et mon réseau professionnel directement sur LinkedIn.
+                </p>
+                <a href="https://www.linkedin.com/in/hamzams23/" target="_blank" rel="noopener" class="btn btn-primary hover-target" style="width: 100%;">in Voir mon profil LinkedIn →</a>
             </div>
         </div>
 
         <div class="bento-card hover-target">
-            <h3 style="font-size: 1.8rem; margin-bottom: 2.5rem; color: white;">Message Direct</h3>
+            <h3 class="serif" style="font-size: 1.8rem; font-weight: 400; margin-bottom: 0.6rem; color: var(--text-white);">Message Direct</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">Réponse rapide garantie pour toute proposition d'entretien.</p>
             <form action="https://formspree.io/f/xdayekre" method="POST" class="contact-form hover-target">
-                <input type="text" name="nom" placeholder="Nom Complet" required class="hover-target">
+                <input type="text" name="nom" placeholder="Nom complet / Entreprise" required class="hover-target">
                 <input type="email" name="email" placeholder="Adresse E-mail professionnelle" required class="hover-target">
-                <textarea name="message" rows="6" placeholder="Décrivez votre projet ou l'offre..." required class="hover-target"></textarea>
-                <button type="submit" class="btn btn-primary hover-target" style="width: 100%; border: none; padding: 1.2rem; font-size: 1.1rem;">Envoyer le message 🚀</button>
+                <textarea name="message" rows="6" placeholder="Bonjour Hamza, nous recherchons un Technicien Support / Helpdesk N1 sur le secteur de..." required class="hover-target"></textarea>
+                <button type="submit" class="btn btn-primary hover-target" style="width: 100%; padding: 1.1rem;">Envoyer le message</button>
             </form>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>© 2026 Mansouri Sandali Hamza // Architectures Systèmes & Réseaux</p>
+    <span>© 2026 El Mansouri Sandali Hamza — Dreux (28) & Yvelines (78)</span>
+    <em>Technicien Support Informatique & Helpdesk N1</em>
 </footer>
 
 <script>
-    // --- 1. BARRE DE PROGRESSION SCROLL ---
-    window.onscroll = function() {
+    // --- 1. BARRE DE PROGRESSION SCROLL & MENU ACTIF ---
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', function() {
         let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         let scrolled = (winScroll / height) * 100;
         document.getElementById("scroll-progress").style.width = scrolled + "%";
         
-        // Gestion de la Navbar
         const nav = document.getElementById('navbar');
         if (window.scrollY > 50) {
-            nav.style.padding = '0.8rem 5%';
-            nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+            nav.style.padding = '0.8rem 4rem';
         } else {
-            nav.style.padding = '1rem 5%';
-            nav.style.boxShadow = 'none';
+            nav.style.padding = '1.2rem 4rem';
         }
-    };
 
-    // --- 2. CURSEUR PERSONNALISÉ ---
+        let current = '';
+        sections.forEach(sec => {
+            if (window.scrollY + 160 >= sec.offsetTop) {
+                current = sec.getAttribute('id');
+            }
+        });
+        navItems.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+    }, { passive: true });
+
+    // --- 2. MENU MOBILE ---
+    const burgerBtn = document.getElementById('burger-btn');
+    const navLinks = document.getElementById('nav-links');
+    burgerBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navItems.forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // --- 3. CURSEUR PERSONNALISÉ ---
     const cursorDot = document.getElementById('cursor-dot');
     const cursorOutline = document.getElementById('cursor-outline');
     const hoverTargets = document.querySelectorAll('.hover-target');
@@ -811,15 +1107,15 @@
         cursorOutline.animate({
             left: `${posX}px`,
             top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
+        }, { duration: 450, fill: "forwards" });
     });
 
     hoverTargets.forEach(target => {
-        target.addEventListener('mouseenter', () => { document.body.classList.add('cursor-hover'); });
-        target.addEventListener('mouseleave', () => { document.body.classList.remove('cursor-hover'); });
+        target.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        target.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
     });
 
-    // --- 3. EFFET SPOTLIGHT SUR LES CARTES BENTO ---
+    // --- 4. EFFET SPOTLIGHT DORÉ SUR LES CARTES BENTO ---
     document.querySelectorAll('.bento-card').forEach(card => {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
@@ -830,23 +1126,35 @@
         });
     });
 
-    // --- 4. MACHINE À ÉCRIRE (TYPEWRITER) ---
-    const textToType = "Technicien Systèmes & Réseaux";
+    // --- 5. MACHINE À ÉCRIRE MULTI-ROLES ---
+    const roles = [
+        "Technicien Helpdesk N1 / N2",
+        "Technicien Support Informatique",
+        "Administrateur Systèmes & Réseaux (SISR)",
+        "Disponible à Dreux (28) & Yvelines (78)"
+    ];
     const typewriterElement = document.getElementById("typewriter-text");
-    let index = 0;
+    let roleIndex = 0, charIndex = 0, isDeleting = false;
 
     function typeWriter() {
-        if (index < textToType.length) {
-            typewriterElement.innerHTML += textToType.charAt(index);
-            index++;
-            setTimeout(typeWriter, 80);
-        } else {
-            setTimeout(() => { typewriterElement.style.borderRight = "none"; }, 2000);
-        }
-    }
-    setTimeout(typeWriter, 500);
+        const currentRole = roles[roleIndex];
+        charIndex += isDeleting ? -1 : 1;
+        typewriterElement.textContent = currentRole.slice(0, charIndex);
 
-    // --- 5. ANIMATIONS D'APPARITION (Reveal) ---
+        let delay = isDeleting ? 35 : 75;
+        if (!isDeleting && charIndex === currentRole.length) {
+            delay = 1800;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            delay = 350;
+        }
+        setTimeout(typeWriter, delay);
+    }
+    setTimeout(typeWriter, 400);
+
+    // --- 6. ANIMATIONS D'APPARITION AU SCROLL (Reveal) ---
     const revealElements = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -858,21 +1166,21 @@
     }, { threshold: 0.1 });
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // --- 6. ANIMATION BARRES DE COMPÉTENCES ---
+    // --- 7. ANIMATION AUTOMATIQUE DES BARRES DE COMPÉTENCES AU SCROLL ---
     const skillsContainer = document.querySelector('.skills-container');
     const skillsObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const bars = entry.target.querySelectorAll('.skill-fill');
-                bars.forEach((bar, index) => {
+                bars.forEach((bar, idx) => {
                     setTimeout(() => {
                         bar.style.width = bar.getAttribute('data-percent');
-                    }, index * 150);
+                    }, idx * 130);
                 });
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.25 });
     if (skillsContainer) skillsObserver.observe(skillsContainer);
 </script>
 
