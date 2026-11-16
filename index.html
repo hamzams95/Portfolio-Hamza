@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza El Mansouri — Portfolio Systèmes, Réseaux & Sécurité</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card: #131a2a;
+            --border: #1f293d;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem 1rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.25rem;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+        
+        .col-8 { grid-column: span 8; }
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+        .col-12 { grid-column: span 12; }
+
+        @media (max-width: 850px) {
+            .col-8, .col-4, .col-6 { grid-column: span 12; }
+        }
+
+        h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.25rem; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+        .subtitle { color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; }
+        p { color: var(--muted); font-size: 0.95rem; }
+        
+        .badge-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .badge {
+            background: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .timeline-item { margin-bottom: 1.25rem; padding-left: 1rem; border-left: 2px solid var(--border); }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .date { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--accent); color: #0b0f19;
+            padding: 0.65rem 1.25rem; border-radius: 8px;
+            text-decoration: none; font-weight: 600; margin-top: 1.25rem;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.9; }
+
+        .project-box {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .project-box:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bento-grid">
+            
+            <!-- Profil -->
+            <div class="card col-8">
+                <h1>Hamza El Mansouri</h1>
+                <div class="subtitle">Administration Systèmes, Réseaux & Sécurité (LP MRIT - ASSR)</div>
+                <p>Technicien Support & Infrastructure en alternance, diplômé d'un BTS SIO option SISR. Passionné par le déploiement d'architectures Linux/Windows, la supervision réseau, la virtualisation et la sécurisation des infrastructures.</p>
+                <div class="badge-list">
+                    <span class="badge">Debian / Linux CLI</span>
+                    <span class="badge">Windows Server / AD DS</span>
+                    <span class="badge">VMware ESXi</span>
+                    <span class="badge">pfSense / Réseaux</span>
+                    <span class="badge">Zabbix & GLPI</span>
+                </div>
+            </div>
+
+            <!-- Certifications & Contact -->
+            <div class="card col-4">
+                <h2><i class="fa-solid fa-shield-halved"></i> Certifications</h2>
+                <div class="project-box">
+                    <h3>ANSSI — SecNumacadémie</h3>
+                    <p>Sécurité du numérique et bonnes pratiques.</p>
+                </div>
+                <div class="project-box">
+                    <h3>CNIL — Atelier RGPD</h3>
+                    <p>Protection des données personnelles et conformité.</p>
+                </div>
+                <a href="https://github.com/hamzams95" target="_blank" class="btn"><i class="fa-brands fa-github"></i> Mon GitHub</a>
+            </div>
+
+            <!-- Expériences -->
+            <div class="card col-6">
+                <h2><i class="fa-solid fa-briefcase"></i> Expériences Professionnelles</h2>
+                <div class="timeline-item">
+                    <span class="date">2026 — Présent (Alternance)</span>
+                    <h3>Technicien Support N1 — CMS Expertise</h3>
+                    <p>Assistance utilisateurs, gestion du parc informatique, administration et maintenance des outils numériques.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">2026 (Stage BTS 2e année)</span>
+                    <h3>Assistant Technicien Helpdesk — Insta Paris</h3>
+                    <p>Supervision d'infrastructure via Zabbix et GLPI, résolution d'incidents de niveau 1.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">2025 (Stage BTS 1re année)</span>
+                    <h3>Technicien Infrastructure — Applixia</h3>
+                    <p>Inventaire physique en baies serveurs (Datacenters Equinix Saint-Denis & Lognes), supervision GLPI et maintenance matérielle.</p>
+                </div>
+            </div>
+
+            <!-- Formation -->
+            <div class="card col-6">
+                <h2><i class="fa-solid fa-graduation-cap"></i> Formation</h2>
+                <div class="timeline-item">
+                    <span class="date">2026 — 2027</span>
+                    <h3>Licence Pro MRIT — Option ASSR</h3>
+                    <p>IUT de Villetaneuse (Université Sorbonne Paris Nord) — Administration et Sécurité des Systèmes et des Réseaux.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">2024 — 2026</span>
+                    <h3>BTS SIO — Option SISR</h3>
+                    <p>Solutions d'Infrastructure, Systèmes et Réseaux (Obtenu).</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">2024</span>
+                    <h3>Baccalauréat Général</h3>
+                    <p>Spécialités Mathématiques et Numérique & Sciences Informatiques (NSI).</p>
+                </div>
+            </div>
+
+            <!-- Projets Techniques -->
+            <div class="card col-12">
+                <h2><i class="fa-solid fa-server"></i> Projets & Réalisations Techniques</h2>
+                <div class="bento-grid" style="margin-top: 0.5rem;">
+                    <div class="project-box col-4">
+                        <h3>Infrastructure & Supervision</h3>
+                        <p>Déploiement de serveurs Debian (LAMP, NFS, rsyslog, NTP), supervision Zabbix et gestion de parc avec GLPI 10/11 + agents.</p>
+                    </div>
+                    <div class="project-box col-4">
+                        <h3>Sécurité & Annuaire</h3>
+                        <p>Configuration de pare-feu pfSense, segmentation VLAN, et gestion d'Active Directory (AD DS, GPO, OUs) sous Windows Server.</p>
+                    </div>
+                    <div class="project-box col-4">
+                        <h3>Développement Web</h3>
+                        <p>Conception d'interfaces web responsives (HTML5/CSS3/JS) et développement du jeu arcade HTML5 Canvas <em>Neon Syndicate: Striker</em>.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
